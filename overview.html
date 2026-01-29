@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обзор — Города России</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>
+  <a href="index.html" class="russia-btn">
+    <span class="icon">⭐</span>
+    Россия
+  </a>
+</h2>
+
+    <ul>
+      <li class="active"><a href="overview.html">Обзор</a></li>
+      <li><a href="big.html">Крупные города</a></li>
+      <li><a href="small.html">Малые города</a></li>
+    </ul>
+  </aside>
+
+  <main class="dashboard">
+    <header>
+      <h1>Обзор населения России</h1>
+      <p>Данные + реальный API</p>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Россия</h3>
+        <p class="big" id="russiaPopulation">Загрузка...</p>
+        <span>Население страны</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    async function loadAPI() {
+      const res = await fetch('https://restcountries.com/v3.1/name/russia');
+      const data = await res.json();
+      const pop = (data[0].population / 1_000_000).toFixed(1);
+      document.getElementById('russiaPopulation').textContent = pop + ' млн человек';
+    }
+    loadAPI();
+  </script>
+</body>
+</html>

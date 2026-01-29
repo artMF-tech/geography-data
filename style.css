@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f1117, #14182b);
+  color: #fff;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 230px;
+  background: linear-gradient(180deg, #151823, #10121b);
+  padding: 24px 20px;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar h2 {
+  margin-bottom: 24px;
+  font-size: 22px;
+  color: #ff6b8a;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 12px 10px;
+  border-radius: 10px;
+  color: #bbb;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sidebar li:hover {
+  background: rgba(255, 107, 138, 0.12);
+  color: #ff6b8a;
+}
+
+/* ===== MAIN ===== */
+.dashboard {
+  flex: 1;
+  padding: 32px;
+}
+
+header {
+  margin-bottom: 32px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+header p {
+  margin-top: 6px;
+  color: #9aa0c7;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-bottom: 45px;
+}
+
+.card {
+  background: linear-gradient(160deg, #1c2030, #22274a);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card .big {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 12px 0 6px;
+  color: #ff6b8a;
+}
+
+.card span {
+  font-size: 14px;
+  color: #9aa0c7;
+}
+
+/* ===== CHARTS ===== */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.chart-box {
+  background: linear-gradient(160deg, #1c2030, #20244a);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+.chart-box h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card,
+.chart-box {
+  animation: fadeUp 0.8s ease both;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .sidebar ul {
+    display: flex;
+    gap: 12px;
+  }
+
+  .dashboard {
+    padding: 20px;
+  }
+}/* ===== NAVIGATION UI ===== */
+.sidebar li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.sidebar li {
+  padding: 14px 16px;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.sidebar li:hover {
+  background: rgba(255, 107, 138, 0.15);
+  transform: translateX(4px);
+}
+
+.sidebar li.active {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 107, 138, 0.35),
+    rgba(255, 107, 138, 0.08)
+  );
+  color: #ff6b8a;
+  box-shadow: inset 4px 0 0 #ff6b8a;
+}
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at top left,
+    rgba(255, 107, 138, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  .sidebar li:hover {
+    transform: none;
+  }
+
+  .sidebar li.active {
+    box-shadow: none;
+    border: 1px solid rgba(255, 107, 138, 0.4);
+  }
+}
+/* ===== КНОПКА "РОССИЯ" (ГЛАВНАЯ) ===== */
+.sidebar h2 {
+  margin-bottom: 28px;
+}
+
+.sidebar h2 a {
+  display: block;
+  padding: 14px 18px;
+  border-radius: 18px;
+
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  background: linear-gradient(135deg, #ff6b8a, #ff9fb3);
+
+  box-shadow:
+    0 10px 30px rgba(255, 107, 138, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.sidebar h2 a:hover {
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.05);
+
+  box-shadow:
+    0 16px 40px rgba(255, 107, 138, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.sidebar h2 a:active {
+  transform: translateY(0) scale(0.97);
+}
+/* ===== КНОПКА "РОССИЯ" С ИКОНКОЙ ===== */
+.russia-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 18px;
+  border-radius: 18px;
+
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  background: linear-gradient(135deg, #ff6b8a, #ff9fb3);
+
+  box-shadow:
+    0 10px 30px rgba(255, 107, 138, 0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+
+  transition: all 0.35s ease;
+}
+
+.russia-btn .icon {
+  font-size: 22px;
+  animation: starPulse 2.5s infinite;
+}
+
+.russia-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+@keyframes starPulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
